@@ -1,29 +1,29 @@
 // src/components/RegisterForm.jsx
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import authService from '../services/authService';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import authService from "../services/authService";
 
 export default function RegisterForm() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirmation, setPasswordConfirmation] = useState('');
-  const [error, setError] = useState(null); // Estado para armazenar mensagens de erro
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      setError(null); 
+      setError(null);
       await authService.register(name, email, password, passwordConfirmation);
-      navigate('/login');
+      navigate("/login");
     } catch (error) {
-      console.error('Registration failed', error);
+      console.error("Registration failed", error);
       if (error.response && error.response.data.errors) {
-        setError(error.response.data.errors.join(', '));
+        setError(error.response.data.errors.join(", "));
       } else {
-        setError('An unknown error occurred. Please try again.');
+        setError("An unknown error occurred. Please try again.");
       }
     }
   };
@@ -34,13 +34,21 @@ export default function RegisterForm() {
         <h1 className="text-2xl font-bold mb-6 text-center">Registrar</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <div
+              className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+              role="alert"
+            >
               <strong className="font-bold">Erro:</strong>
               <span className="block sm:inline">{error}</span>
             </div>
           )}
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nome</label>
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Nome
+            </label>
             <input
               type="text"
               id="name"
@@ -51,7 +59,12 @@ export default function RegisterForm() {
             />
           </div>
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -62,7 +75,12 @@ export default function RegisterForm() {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Senha</label>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Senha
+            </label>
             <input
               type="password"
               id="password"
@@ -73,7 +91,12 @@ export default function RegisterForm() {
             />
           </div>
           <div>
-            <label htmlFor="passwordConfirmation" className="block text-sm font-medium text-gray-700">Confirmação de Senha</label>
+            <label
+              htmlFor="passwordConfirmation"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Confirmação de Senha
+            </label>
             <input
               type="password"
               id="passwordConfirmation"
@@ -91,7 +114,9 @@ export default function RegisterForm() {
           </button>
         </form>
         <div className="mt-4 text-center">
-          <a href="/login" className="text-blue-500 hover:text-blue-700">Já tem uma conta? Faça login</a>
+          <a href="/login" className="text-blue-500 hover:text-blue-700">
+            Já tem uma conta? Faça login
+          </a>
         </div>
       </div>
     </div>

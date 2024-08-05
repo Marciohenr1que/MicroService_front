@@ -1,29 +1,38 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import scrapeData from "../services/scrapeData";
 
 export default function WebScrapingForm({ onTaskCreated }) {
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.post('/api/web_scraping', { url }, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      onTaskCreated(response.data.task);
-      setUrl('');
+      const response = await scrapeData.scrapeData(url);
+
+      if (response.message) {
+        toast.success(response.message);
+        onTaskCreated(response.task);
+      }
+      setUrl("");
     } catch (error) {
-      console.error('Failed to scrape URL', error);
+      console.error("Failed to initiate scraping", error);
+      toast.error("Failed to initiate scraping. Please try again.");
     }
   };
 
   return (
-    <div className="bg-gray-200 p-4 rounded-md">
+    <div className="bg-gray-200 p-4 rounded-md md:w-1/2">
       <h2 className="text-lg font-semibold mb-2">Web Scraping</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="url" className="block text-sm font-medium text-gray-700">URL</label>
+          <label
+            htmlFor="url"
+            className="block text-sm font-medium text-gray-700"
+          >
+            URL
+          </label>
           <input
             type="url"
             id="url"

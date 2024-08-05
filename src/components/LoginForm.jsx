@@ -1,23 +1,25 @@
-import React, { useState } from 'react';
-import authService from '../services/authService';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import authService from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
-export default function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+export default function LoginForm({ onLogin }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    authService.login(email, password)
-      .then(response => {
-        console.log('Login successful', response);
-        localStorage.setItem('token', response.data.token);
-        navigate('/tasks');
+    onLogin();
+    authService
+      .login(email, password)
+      .then((response) => {
+        console.log("Login successful", response);
+        localStorage.setItem("token", response.token);
+        localStorage.setItem("user", response.user.name);
+        navigate("/tasks");
       })
-      .catch(error => {
-        setError('Login failed. Please check your email and password.');
+      .catch((error) => {
+        setError("Login failed. Please check your email and password.");
       });
   };
 
@@ -27,7 +29,12 @@ export default function LoginForm() {
         <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Email
+            </label>
             <input
               type="email"
               id="email"
@@ -38,7 +45,12 @@ export default function LoginForm() {
             />
           </div>
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">Senha</label>
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Senha
+            </label>
             <input
               type="password"
               id="password"
@@ -57,7 +69,9 @@ export default function LoginForm() {
           </button>
         </form>
         <div className="mt-4 text-center">
-          <a href="/register" className="text-blue-500 hover:text-blue-700">Novo cadastro? Clique aqui</a>
+          <a href="/register" className="text-blue-500 hover:text-blue-700">
+            Novo cadastro? Clique aqui
+          </a>
         </div>
       </div>
     </div>

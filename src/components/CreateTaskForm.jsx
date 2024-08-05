@@ -1,34 +1,40 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import tasksService from "../services/tasksService";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function CreateTaskForm({ onTaskCreated }) {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      const token = localStorage.getItem('token');
-      const response = await axios.post('/api/tasks', {
-        title,
-        description,
-      }, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      onTaskCreated(response.data.task);
-      setTitle('');
-      setDescription('');
+      const taskData = { title, description };
+      const newTask = await tasksService.createTask(taskData);
+      onTaskCreated(newTask);
+      setTitle("");
+      setDescription("");
+      toast.success("Tarefa criada com sucesso!");
     } catch (error) {
-      console.error('Failed to create task', error);
+      console.error("Failed to create task", error);
+      toast.error("Tarefa não pode ser criada");
+      toast.error("Falha ao criar a tarefa.");
     }
   };
 
   return (
-    <div className="bg-gray-200 p-4 rounded-md">
+    <div className="bg-gray-200 p-4 rounded-md md:w-1/2">
       <h2 className="text-lg font-semibold mb-2">+ Criar Tarefa</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="title" className="block text-sm font-medium text-gray-700">Título</label>
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Título
+          </label>
           <input
             type="text"
             id="title"
@@ -39,7 +45,12 @@ export default function CreateTaskForm({ onTaskCreated }) {
           />
         </div>
         <div>
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700">Descrição</label>
+          <label
+            htmlFor="description"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Descrição
+          </label>
           <textarea
             id="description"
             value={description}
