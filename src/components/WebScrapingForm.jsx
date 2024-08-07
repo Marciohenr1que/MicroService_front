@@ -4,7 +4,6 @@ import scrapeData from "../services/scrapeData";
 
 export default function WebScrapingForm({ onTaskCreated }) {
   const [url, setUrl] = useState("");
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 

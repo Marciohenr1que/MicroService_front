@@ -3,19 +3,22 @@ import scrapeData from "../services/scrapeData";
 
 const WebScrappingTable = () => {
   const [data, setData] = useState([]);
+  const userId = localStorage.getItem("user_id");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const scrapedData = await scrapeData.getwebScraping();
-        setData(scrapedData);
+        // Filtra os dados para incluir apenas os itens com o user_id correspondente
+        const filteredData = scrapedData.filter(item => item.user_id === userId);
+        setData(filteredData);
       } catch (error) {
         console.error(error.message);
       }
     };
 
     fetchData();
-  }, []);
+  }, [userId]);
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("pt-BR", {
@@ -67,3 +70,4 @@ const WebScrappingTable = () => {
 };
 
 export default WebScrappingTable;
+
