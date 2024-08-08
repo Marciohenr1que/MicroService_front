@@ -17,7 +17,7 @@ export default function RegisterForm() {
     try {
       setError(null);
       await authService.register(name, email, password, passwordConfirmation);
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.error("Registration failed", error);
       if (error.response && error.response.data.errors) {

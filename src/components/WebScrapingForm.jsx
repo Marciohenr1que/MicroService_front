@@ -2,17 +2,19 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import scrapeData from "../services/scrapeData";
 
-export default function WebScrapingForm({ onTaskCreated }) {
+export default function WebScrapingForm() {
   const [url, setUrl] = useState("");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    const userId = localStorage.getItem('user_id');
+  
     try {
-      const response = await scrapeData.scrapeData(url);
-
+      const response = await scrapeData.scrapeData(url, userId);
+  
       if (response.message) {
         toast.success(response.message);
-        onTaskCreated(response.task);
+        
       }
       setUrl("");
     } catch (error) {
@@ -26,10 +28,7 @@ export default function WebScrapingForm({ onTaskCreated }) {
       <h2 className="text-lg font-semibold mb-2">Web Scraping</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label
-            htmlFor="url"
-            className="block text-sm font-medium text-gray-700"
-          >
+          <label htmlFor="url" className="block text-sm font-medium text-gray-700">
             URL
           </label>
           <input

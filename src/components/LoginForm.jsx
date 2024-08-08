@@ -16,6 +16,7 @@ export default function LoginForm({ onLogin }) {
         console.log("Login successful", response);
         localStorage.setItem("token", response.token);
         localStorage.setItem("user", response.user.name);
+        localStorage.setItem("user_id", response.user.id);
         navigate("/tasks");
       })
       .catch((error) => {

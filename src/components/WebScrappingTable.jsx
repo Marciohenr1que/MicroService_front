@@ -5,20 +5,27 @@ const WebScrappingTable = () => {
   const [data, setData] = useState([]);
   const userId = localStorage.getItem("user_id");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const scrapedData = await scrapeData.getwebScraping();
-        // Filtra os dados para incluir apenas os itens com o user_id correspondente
-        const filteredData = scrapedData.filter(item => item.user_id === userId);
-        setData(filteredData);
-      } catch (error) {
-        console.error(error.message);
+  const fetchData = async () => {
+    try {
+      
+      if (!userId) {
+        console.error("User ID não encontrado no localStorage.");
+        return;
       }
-    };
 
+      const scrapedData = await scrapeData.getwebScraping(userId);
+
+      // Convertendo ambos os valores para string antes da comparação
+      const filteredData = scrapedData.filter(item => String(item.user_id) === String(userId));
+      setData(filteredData);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
-  }, [userId]);
+  }, [userId]); 
 
   const formatCurrency = (amount) => {
     return new Intl.NumberFormat("pt-BR", {
@@ -48,18 +55,18 @@ const WebScrappingTable = () => {
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {data?.map((item) => (
-            <tr key={item.id}>
+            <tr key={item?.id}>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                {item.brand}
+                {item?.brand}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {item.model}
+                {item?.model}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {formatCurrency(parseFloat(item.price))}
+                {formatCurrency(parseFloat(item?.price))}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {new Date(item.created_at).toLocaleDateString()}{" "}
+                {new Date(item?.created_at).toLocaleDateString()}{" "}
               </td>
             </tr>
           ))}
@@ -70,4 +77,5 @@ const WebScrappingTable = () => {
 };
 
 export default WebScrappingTable;
+
 

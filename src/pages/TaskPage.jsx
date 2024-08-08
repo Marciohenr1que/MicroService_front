@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import TaskTable from "../components/TaskTable";
 import CreateTaskForm from "../components/CreateTaskForm";
@@ -10,6 +10,7 @@ import WebScrappingTable from "../components/WebScrappingTable";
 export default function TaskPage() {
   const [tasks, setTasks] = useState([]);
   const [user, setUser] = useState(null);
+ 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,6 +49,7 @@ export default function TaskPage() {
     );
   };
 
+ 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       <Header user={user} onLogout={handleLogout} />
@@ -56,12 +58,8 @@ export default function TaskPage() {
           <div className="mb-6">
             <h1 className="text-2xl font-bold md:py-10 py-5">Tarefas</h1>
             <div className="md:flex md:container gap-10 space-y-10 md:space-y-0">
-              <CreateTaskForm
-                onTaskCreated={(task) => setTasks([...tasks, task])}
-              />
-              <WebScrapingForm
-                onTaskCreated={(task) => setTasks([...tasks, task])}
-              />
+              <CreateTaskForm />
+              <WebScrapingForm  />
             </div>
           </div>
           <TaskTable

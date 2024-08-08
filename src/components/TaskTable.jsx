@@ -47,22 +47,16 @@ export default function TaskTable({ tasks, onTaskUpdated, onTaskDeleted }) {
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               Descrição
             </th>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-              Status
-            </th>
           </tr>
         </thead>
         <tbody className="bg-white divide-y divide-gray-200">
           {tasks?.map((task) => (
-            <tr key={task.id}>
+            <tr key={task?.id}>
               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                {task.title}
+                {task?.title}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                {task.description}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap">
-                <TaskStatusButton status={task.status} />
+                {task?.description}
               </td>
               <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                 <button
