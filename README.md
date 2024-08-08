@@ -6,6 +6,7 @@ Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplo
 
 - **Componentização**: A aplicação é construída com uma abordagem modular, utilizando componentes reutilizáveis.
 - **Docker**: Inclui um Dockerfile para empacotar e executar a aplicação em um contêiner.
+- **Css: Tailwind
 
 ## Pré-requisitos
 
@@ -21,7 +22,6 @@ Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplo
 - **`package.json`**: Gerencia as dependências e scripts da aplicação.
 
 ## Instalação
-
 ### Clonando o Repositório
 
 ```bash
@@ -46,13 +46,13 @@ Se estiver usando NPM:
 
 bash
 Copiar código
-npm start
+npm run dev
 Ou, se estiver usando Yarn:
 
 bash
 Copiar código
 yarn start
-A aplicação estará disponível em http://localhost:3000.
+A aplicação estará disponível em http://localhost:5173.
 
 Construção e Execução com Docker
 Construa a imagem Docker:
