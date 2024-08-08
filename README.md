@@ -64,8 +64,8 @@ Execute o contêiner Docker:
 
 bash
 Copiar código
-docker run -p 3000:3000 seu_repositorio
-A aplicação estará disponível em http://localhost:3000.
+docker run -p 5173:5173 seu_repositorio
+A aplicação estará disponível em http://localhost:5173.
 
 Componentização
 O projeto utiliza uma abordagem baseada em componentes. Recomendações incluem:
@@ -74,7 +74,7 @@ Separação de Preocupações: Mantenha os componentes pequenos e focados em uma
 Reutilização: Desenvolva componentes modulares que possam ser reutilizados em diferentes partes da aplicação.
 Documentação: Documente os componentes e suas propriedades para facilitar a manutenção e o entendimento.
 Scripts Disponíveis
-npm start: Inicia a aplicação em modo de desenvolvimento.
+npm run dev: Inicia a aplicação em modo de desenvolvimento.
 npm run build: Constrói a aplicação para produção.
-npm run lint: Executa linters para verificar a qualidade do código.
-npm test: Executa testes unitários.
+npm run start
+
