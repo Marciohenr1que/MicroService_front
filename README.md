@@ -6,6 +6,7 @@ Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplo
 
 - **Componentização**: A aplicação é construída com uma abordagem modular, utilizando componentes reutilizáveis.
 - **Docker**: Inclui um Dockerfile para empacotar e executar a aplicação em um contêiner.
+- **Css**: Tailwind
 
 ## Pré-requisitos
 
@@ -21,11 +22,10 @@ Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplo
 - **`package.json`**: Gerencia as dependências e scripts da aplicação.
 
 ## Instalação
-
 ### Clonando o Repositório
 
 ```bash
-git clone https://github.com/seu_usuario/seu_repositorio.git
+git clone https://github.com/seu_usuario/seu_repositorio.git](https://github.com/Marciohenr1que/MicroService_front
 cd seu_repositorio
 Configuração do Ambiente
 Instale as dependências:
@@ -46,13 +46,13 @@ Se estiver usando NPM:
 
 bash
 Copiar código
-npm start
+npm run dev
 Ou, se estiver usando Yarn:
 
 bash
 Copiar código
 yarn start
-A aplicação estará disponível em http://localhost:3000.
+A aplicação estará disponível em http://localhost:5173.
 
 Construção e Execução com Docker
 Construa a imagem Docker:
@@ -64,8 +64,8 @@ Execute o contêiner Docker:
 
 bash
 Copiar código
-docker run -p 3000:3000 seu_repositorio
-A aplicação estará disponível em http://localhost:3000.
+docker run -p 5173:5173 seu_repositorio
+A aplicação estará disponível em http://localhost:5173.
 
 Componentização
 O projeto utiliza uma abordagem baseada em componentes. Recomendações incluem:
@@ -74,7 +74,7 @@ Separação de Preocupações: Mantenha os componentes pequenos e focados em uma
 Reutilização: Desenvolva componentes modulares que possam ser reutilizados em diferentes partes da aplicação.
 Documentação: Documente os componentes e suas propriedades para facilitar a manutenção e o entendimento.
 Scripts Disponíveis
-npm start: Inicia a aplicação em modo de desenvolvimento.
+npm run dev: Inicia a aplicação em modo de desenvolvimento.
 npm run build: Constrói a aplicação para produção.
-npm run lint: Executa linters para verificar a qualidade do código.
-npm test: Executa testes unitários.
+npm run start
+
