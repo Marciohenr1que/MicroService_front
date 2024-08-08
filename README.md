@@ -6,7 +6,7 @@ Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplo
 
 - **Componentização**: A aplicação é construída com uma abordagem modular, utilizando componentes reutilizáveis.
 - **Docker**: Inclui um Dockerfile para empacotar e executar a aplicação em um contêiner.
-- **Css: Tailwind
+- **Css**: Tailwind
 
 ## Pré-requisitos
 
