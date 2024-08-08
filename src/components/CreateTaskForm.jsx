@@ -13,10 +13,11 @@ export default function CreateTaskForm() {
     try {
       const taskData = { title, description };
       const newTask = await tasksService.createTask(taskData);
-      
+
       setTitle("");
       setDescription("");
       toast.success("Tarefa criada com sucesso!");
+      window.location.reload();
     } catch (error) {
       console.error("Failed to create task", error);
       toast.error("Tarefa não pode ser criada");

@@ -19,6 +19,7 @@ export default function WebScrapingForm({ onTaskCreated }) {
       if (response.message) {
         toast.success(response.message);
         onTaskCreated(response.task);
+        window.location.reload();
       }
       setUrl("");
     } catch (error) {
