@@ -3,7 +3,7 @@ import tasksService from "../services/tasksService";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function CreateTaskForm({ onTaskCreated }) {
+export default function CreateTaskForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -13,7 +13,7 @@ export default function CreateTaskForm({ onTaskCreated }) {
     try {
       const taskData = { title, description };
       const newTask = await tasksService.createTask(taskData);
-      onTaskCreated(newTask);
+      
       setTitle("");
       setDescription("");
       toast.success("Tarefa criada com sucesso!");
