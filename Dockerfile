@@ -10,17 +10,11 @@ COPY package.json package-lock.json ./
 # Instale as dependências
 RUN npm install
 
-# Copie o restante do código da aplicação
+# Copie o restante do código da aplicação para o contêiner
 COPY . .
 
-# Construa a aplicação para produção
-RUN npm run build
+# Exponha a porta 5173
+EXPOSE 5173
 
-# Instale o servidor HTTP estático para servir os arquivos estáticos
-RUN npm install -g serve
-
-# Exponha a porta 3000
-EXPOSE 3000
-
-# Comando para iniciar o servidor
-CMD ["serve", "-s", "dist", "-l", "3000"]
+# Comando para iniciar a aplicação em modo de desenvolvimento
+CMD ["npm", "run", "dev"]
