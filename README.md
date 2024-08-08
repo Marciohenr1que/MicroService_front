@@ -1,8 +1,80 @@
-# React + Vite
+# Front-End Microservices Orchestrator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplos microserviços. Utiliza Node.js e está configurada para construir e servir uma aplicação que pode se comunicar com diversos microserviços. O projeto segue a arquitetura de componentização para melhorar a manutenção e a reutilização do código.
 
-Currently, two official plugins are available:
+## Visão Geral
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Componentização**: A aplicação é construída com uma abordagem modular, utilizando componentes reutilizáveis.
+- **Docker**: Inclui um Dockerfile para empacotar e executar a aplicação em um contêiner.
+
+## Pré-requisitos
+
+- Node.js 18.x ou superior
+- NPM ou Yarn
+- Docker (opcional, para execução em contêiner)
+
+## Estrutura do Projeto
+
+- **`src/`**: Contém o código-fonte da aplicação.
+- **`public/`**: Arquivos públicos e estáticos.
+- **`Dockerfile`**: Arquivo de configuração para construir e servir a aplicação com Docker.
+- **`package.json`**: Gerencia as dependências e scripts da aplicação.
+
+## Instalação
+
+### Clonando o Repositório
+
+```bash
+git clone https://github.com/seu_usuario/seu_repositorio.git
+cd seu_repositorio
+Configuração do Ambiente
+Instale as dependências:
+
+Se estiver usando NPM:
+
+bash
+Copiar código
+npm install
+Ou, se estiver usando Yarn:
+
+bash
+Copiar código
+yarn install
+Execute a aplicação em modo de desenvolvimento:
+
+Se estiver usando NPM:
+
+bash
+Copiar código
+npm start
+Ou, se estiver usando Yarn:
+
+bash
+Copiar código
+yarn start
+A aplicação estará disponível em http://localhost:3000.
+
+Construção e Execução com Docker
+Construa a imagem Docker:
+
+bash
+Copiar código
+docker build -t seu_repositorio .
+Execute o contêiner Docker:
+
+bash
+Copiar código
+docker run -p 3000:3000 seu_repositorio
+A aplicação estará disponível em http://localhost:3000.
+
+Componentização
+O projeto utiliza uma abordagem baseada em componentes. Recomendações incluem:
+
+Separação de Preocupações: Mantenha os componentes pequenos e focados em uma única responsabilidade.
+Reutilização: Desenvolva componentes modulares que possam ser reutilizados em diferentes partes da aplicação.
+Documentação: Documente os componentes e suas propriedades para facilitar a manutenção e o entendimento.
+Scripts Disponíveis
+npm start: Inicia a aplicação em modo de desenvolvimento.
+npm run build: Constrói a aplicação para produção.
+npm run lint: Executa linters para verificar a qualidade do código.
+npm test: Executa testes unitários.
