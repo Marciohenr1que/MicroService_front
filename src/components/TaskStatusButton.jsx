@@ -11,10 +11,10 @@ export default function TaskStatusButton({ status }) {
   const statusClass = statusClasses[status] || "bg-gray-500 text-white";
 
   return (
-    <span
+    <buttom
       className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${statusClass}`}
     >
       {status}
-    </span>
+    </buttom>
   );
 }

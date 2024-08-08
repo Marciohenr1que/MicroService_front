@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import scrapeData from "../services/scrapeData";
+import LoadingOverlay from "../components/LoadingOverlay";
 
 export default function WebScrapingForm({ onTaskCreated }) {
   const [url, setUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const userId = localStorage.getItem("user_id");
+
+    setIsLoading(true); // Ativa o carregamento
 
     try {
-      const response = await scrapeData.scrapeData(url);
+      const response = await scrapeData.scrapeData(url, userId);
 
       if (response.message) {
         toast.success(response.message);
@@ -18,6 +24,8 @@ export default function WebScrapingForm({ onTaskCreated }) {
     } catch (error) {
       console.error("Failed to initiate scraping", error);
       toast.error("Failed to initiate scraping. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -48,6 +56,7 @@ export default function WebScrapingForm({ onTaskCreated }) {
           Scraping
         </button>
       </form>
+      {isLoading && <LoadingOverlay />}
     </div>
   );
 }

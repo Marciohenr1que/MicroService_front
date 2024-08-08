@@ -9,13 +9,14 @@ export default function LoginForm({ onLogin }) {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    onLogin();
+
     authService
       .login(email, password)
       .then((response) => {
-        console.log("Login successful", response);
         localStorage.setItem("token", response.token);
         localStorage.setItem("user", response.user.name);
+        localStorage.setItem("user_id", response.user.id);
+        onLogin();
         navigate("/tasks");
       })
       .catch((error) => {

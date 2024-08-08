@@ -2,15 +2,18 @@ import axios from "axios";
 
 const API_URL = "http://localhost:3001";
 
-const scrapeData = async (url) => {
-  const userId = localStorage.getItem('user_id');
+const scrapeData = async (url, userId) => {
   try {
-    const response = await axios.post(`${API_URL}/scrape`, { url},{
-      headers: {
-        'X-User-Id': userId,
-        'Content-Type': 'application/json'
+    const response = await axios.post(
+      `${API_URL}/scrape`,
+      { url },
+      {
+        headers: {
+          "X-User-Id": userId,
+          "Content-Type": "application/json",
+        },
       }
-    });
+    );
     return response.data;
   } catch (error) {
     throw new Error(
@@ -19,9 +22,14 @@ const scrapeData = async (url) => {
   }
 };
 
-const getwebScraping = async () => {
+const getwebScraping = async (userId) => {
   try {
-    const response = await axios.get(`${API_URL}/scraped_data`);
+    const response = await axios.get(`${API_URL}/scraped_data`, {
+      headers: {
+        "X-User-Id": userId,
+        "Content-Type": "application/json",
+      },
+    });
     return response.data;
   } catch (error) {
     throw new Error(error.response?.data?.error || "Failed to fetch scraped");

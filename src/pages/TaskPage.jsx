@@ -51,8 +51,8 @@ export default function TaskPage() {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col">
       <Header user={user} onLogout={handleLogout} />
-      <main className="p-8 flex-grow">
-        <div className="bg-white p-8 rounded-lg shadow-lg">
+      <main className="p-2 md:p-8 flex-grow">
+        <div className="bg-white p-5 rounded-lg shadow-lg">
           <div className="mb-6">
             <h1 className="text-2xl font-bold md:py-10 py-5">Tarefas</h1>
             <div className="md:flex md:container gap-10 space-y-10 md:space-y-0">
@@ -64,11 +64,13 @@ export default function TaskPage() {
               />
             </div>
           </div>
-          <TaskTable
-            tasks={tasks}
-            onTaskUpdated={handleTaskUpdated}
-            onTaskDeleted={handleTaskDeleted}
-          />
+          <div className="py-5">
+            <TaskTable
+              tasks={tasks}
+              onTaskUpdated={handleTaskUpdated}
+              onTaskDeleted={handleTaskDeleted}
+            />
+          </div>
           <WebScrappingTable />
         </div>
       </main>

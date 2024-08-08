@@ -8,9 +8,12 @@ const WebScrappingTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const scrapedData = await scrapeData.getwebScraping();
-        // Filtra os dados para incluir apenas os itens com o user_id correspondente
-        const filteredData = scrapedData.filter(item => item.user_id === userId);
+        const scrapedData = await scrapeData.getwebScraping(userId);
+
+        const filteredData = scrapedData.filter(
+          (item) => item.user_id.toString() === userId
+        );
+        console.log("Filtered Data:", filteredData);
         setData(filteredData);
       } catch (error) {
         console.error(error.message);
@@ -29,6 +32,7 @@ const WebScrappingTable = () => {
 
   return (
     <div className="overflow-x-auto">
+      <h1 className="text-3xl font-bold mb-10 text-center">Web Scrapping</h1>
       <table className="min-w-full divide-y divide-gray-200">
         <thead>
           <tr>
@@ -70,4 +74,3 @@ const WebScrappingTable = () => {
 };
 
 export default WebScrappingTable;
-
