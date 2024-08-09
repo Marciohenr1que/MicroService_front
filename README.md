@@ -1,6 +1,7 @@
 # Front-End Microservices Orchestrator
 
-Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplos microserviços. Utiliza Node.js e está configurada para construir e servir uma aplicação que pode se comunicar com diversos microserviços. O projeto segue a arquitetura de componentização para melhorar a manutenção e a reutilização do código.
+![arquitetura](public/arquitetura.png)
+Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplos microserviços. Utiliza React e está configurada para construir e servir uma aplicação que pode se comunicar com diversos microserviços. O projeto segue a arquitetura de componentização para melhorar a manutenção e a reutilização do código.
 
 ## Visão Geral
 
@@ -22,6 +23,7 @@ Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplo
 - **`package.json`**: Gerencia as dependências e scripts da aplicação.
 
 ## Instalação
+
 ### Clonando o Repositório
 
 ```bash
@@ -78,3 +80,4 @@ npm run dev: Inicia a aplicação em modo de desenvolvimento.
 npm run build: Constrói a aplicação para produção.
 npm run start
 
+```
