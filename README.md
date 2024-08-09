@@ -27,7 +27,7 @@ Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplo
 ### Clonando o Repositório
 
 ```bash
-git clone https://github.com/seu_usuario/seu_repositorio.git](https://github.com/Marciohenr1que/MicroService_front
+git clone https://github.com/Marciohenr1que/MicroService_front
 Configuração do Ambiente
 Instale as dependências:
 
