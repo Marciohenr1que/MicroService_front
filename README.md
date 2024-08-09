@@ -28,7 +28,6 @@ Este projeto é uma aplicação front-end desenvolvida para orquestrar múltiplo
 
 ```bash
 git clone https://github.com/seu_usuario/seu_repositorio.git](https://github.com/Marciohenr1que/MicroService_front
-cd seu_repositorio
 Configuração do Ambiente
 Instale as dependências:
 
@@ -61,12 +60,12 @@ Construa a imagem Docker:
 
 bash
 Copiar código
-docker build -t seu_repositorio .
+docker-compose build
 Execute o contêiner Docker:
 
 bash
 Copiar código
-docker run -p 5173:5173 seu_repositorio
+docker-compose up
 A aplicação estará disponível em http://localhost:5173.
 
 Componentização
